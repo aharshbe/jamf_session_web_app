@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2>Jamf Session => Routes Glossary 📚</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for routes.." title="Type in a route">
+
+<table id="myTable">
+  <tr class="header">
+  	<th style="width:2%;">Type</th>
+    <th style="width:5%;">Route</th>
+    <th style="width:30%;">Info</th>
+    <th style="width:10%;">Return Value</th>
+    <th style="width:40%;">Example</th>
+    
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/</td>
+    <td>Root route, home page</td>
+    <td>n/a</td>
+    <td><a href="http://localhost:3000", target="_blank"/>http://localhost:3000</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_users</td>
+    <td>Generates all Jamf users, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_users", target="_blank"/>http://localhost:3000/jamf_users</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_computers</td>
+    <td>Generates all Jamf computers, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_computers", target="_blank"/>http://localhost:3000/jamf_computers</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_extension_attributes</td>
+    <td>Generates all Jamf extension attributes, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_extension_attributes", target="_blank"/>http://localhost:3000/jamf_extension_attributes</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_policies</td>
+    <td>Generates all Jamf policies, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_policies", target="_blank"/>http://localhost:3000/jamf_policies</a></td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/get_dictionary_by_hostname_jamf</td>
+    <td>Generates a dictionary of hostnames for each computer in Jamf, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/get_dictionary_by_hostname_jamf", target="_blank"/>http://localhost:3000/get_dictionary_by_hostname_jamf</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_scripts</td>
+    <td>Generates all Jamf  scripts, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_scripts", target="_blank"/>http://localhost:3000/jamf_scripts</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_packages</td>
+    <td>Generates all Jamf packages, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_packages", target="_blank"/>http://localhost:3000/jamf_packages</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_computergroups</td>
+    <td>Generates all Jamf computer groups, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/jamf_computergroups", target="_blank"/>http://localhost:3000/jamf_computergroups</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/gear_computers</td>
+    <td>Generates all gear computers, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/gear_computers", target="_blank"/>http://localhost:3000/gear_computers</a></td>
+  </tr>
+
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_computer_search</td>
+    <td>Searches for a specific computer hostname, uses query string, returns JSON</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/jamf_computer_search?q=jaba", target="_blank"/>http://localhost:3000/jamf_computer_search?q=jaba</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_computergroup_search</td>
+    <td>Searches for a specific computer group, uses query string, returns JSON</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/jamf_computergroup_search?q=it", target="_blank"/>http://localhost:3000/jamf_computergroup_search?q=it</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_extension_attribute_search</td>
+    <td>Searches for a specific Jamf extension attribute, uses query string, returns JSON</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/jamf_extension_attribute_search?q=Carbon Black Client ID", target="_blank"/>http://localhost:3000/jamf_extension_attribute_search?q=Carbon Black Client ID</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_package_search</td>
+    <td>Searches for a specific Jamf package, uses query string, returns JSON</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/jamf_package_search?q=1Password-7.0.7.pkg", target="_blank"/>http://localhost:3000/jamf_package_search?q=1Password-7.0.7.pkg</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/jamf_policy_search</td>
+    <td>Searches for a specific Jamf policy, uses query string, returns JSON</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/jamf_policy_search?q=update%20zoom", target="_blank"/>http://localhost:3000/jamf_policy_search?q=update%20zoom</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_user</td>
+    <td>Searches for a user given a serial number, uses query string, returns comma separate value</td>
+    <td>comma seperated value</td>
+    <td><a href="http://localhost:3000/find_user?q=C02X547JJG5K", target="_blank"/>http://localhost:3000/find_user?q=C02X547JJG5K</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/get_dictionary_by_handle</td>
+    <td>Generates a dictionary of all Gear data, handle is key, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/get_dictionary_by_handle", target="_blank"/>http://localhost:3000/get_dictionary_by_handle</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/get_dictionary_by_user</td>
+    <td>Generates a dictionary of all Gear data, user’s name is key, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/get_dictionary_by_user", target="_blank"/>http://localhost:3000/get_dictionary_by_user</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/get_dictionary_by_serial</td>
+    <td>Generates a dictionary of all Gear data, serial number is key, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/get_dictionary_by_serial", target="_blank"/>http://localhost:3000/get_dictionary_by_serial</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_handle</td>
+    <td>Searches for handle of Gear item given a serial number, returns string</td>
+    <td>String</td>
+    <td><a href="http://localhost:3000/find_handle?q=C02X547JJG5K", target="_blank"/>http://localhost:3000/find_handle?q=C02X547JJG5K</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_items_name</td>
+    <td>Searches for item’s of name in Gear given a serial number, returns string</td>
+    <td>String</td>
+    <td><a href="http://localhost:3000/find_items_name?q=C02TT216HV2R", target="_blank"/>http://localhost:3000/find_items_name?q=C02TT216HV2R</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_serials_by_user</td>
+    <td>Searches for all items assigned to a user in Gear given the user’s name, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/find_serials_by_user?q=Taylor Grimes", target="_blank"/>http://localhost:3000/find_serials_by_user?q=John Doe</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_serials_by_handle</td>
+    <td>Searches for all items assigned to a user in Gear given a handle, returns dictionary</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/find_serials_by_handle?q=tfgrimes", target="_blank"/>http://localhost:3000/find_serials_by_handle?q=jhonnrocker</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_gear_object_by_user</td>
+    <td>Returns dictionary object for user in Gear given their name</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/find_gear_object_by_user?q=Travis Kopp", target="_blank"/>http://localhost:3000/find_gear_object_by_user?q=John Doe</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/find_gear_object_by_handle</td>
+    <td>Returns dictionary object for user in Gear given their handle</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/find_gear_object_by_handle?q=tfgrimes", target="_blank"/>http://localhost:3000/find_gear_object_by_handle?q=jhonnrocker</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/dashboard</td>
+    <td>Returns a JSON object of all smartgroups in a given array (for smart group Dashboard)</td>
+    <td>JSON</td>
+    <td><a href="http://localhost:3000/dashboard", target="_blank"/>http://localhost:3000/dashboard</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/generate_smartgroup_csv</td>
+    <td>Generates a CSV of a smart group, uses query string => converts Jamf computer hostnames to the handle of the corresponding user, returns file’s name</td>
+    <td>File's name (String)</td>
+    <td><a href="http://localhost:3000/generate_smartgroup_csv?q=it", target="_blank"/>http://localhost:3000/generate_smartgroup_csv?q=it</a></td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/generate_smartgroup_csv_fast</td>
+    <td>Same as above but doesn't convert hostname to handle, best used by client side for better speeds</td>
+    <td>File's name (String)</td>
+    <td><a href="http://localhost:3000/generate_smartgroup_csv_fast?q=it", target="_blank"/>http://localhost:3000/generate_smartgroup_csv_fast?q=it</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/generate_csv_all</td>
+    <td>Generates a CSV of a all gear users, uses query string, returns dictionary of users by either handle or user depending on which is passed</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/generate_csv_all?q=handle", target="_blank"/>http://localhost:3000/generate_csv_all?q=handle</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/compare</td>
+    <td>Compares Gear and Jamf data, returns a dictionary of either Gear of Jamf or general info depending on what is passed to the query string, e.g., gear, jamf, info</td>
+    <td>Dictionary</td>
+    <td><a href="http://localhost:3000/compare?q=jamf", target="_blank"/>http://localhost:3000/compare?q=jamf</a>, <a href="http://localhost:3000/compare?q=info", target="_blank"/>http://localhost:3000/compare?q=info</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/compare/csv</td>
+    <td>Compares Gear and Jamf data, generates a CSV of either Gear of Jamf or general info depending on what is passed to the query string, e.g., gear, jamf, info, returns the file’s name</td>
+    <td>File's name (String)</td>
+    <td><a href="http://localhost:3000/compare/csv?q=jamf", target="_blank"/>http://localhost:3000/compare/csv?q=jamf</a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/download_csv</td>
+    <td>Downloads a CSV on the server given the file’s name, uses query string</td>
+    <td>n/a</td>
+    <td><a href="http://localhost:3000/download_csv?q=", target="_blank"/>http://localhost:3000/download_csv?q=FILENAME</a></a></td>
+  </tr>
+  <tr>
+  	<td>GET</td>
+    <td>/routes_info</td>
+    <td>Generates a CSV of all routes</td>
+    <td>CSV (serverside - no filename)</td>
+    <td>This is the URL => you're currently on the page. 😘</td>
+  </tr>
+  <tr>
+  	<td>POST</td>
+    <td>/generate_csv</td>
+    <td>Allows a post request of JSON data and generates a CSV of that data, returns the file’s name</td>
+    <td>File's name (String)</td>
+    <td>http://localhost:3000/generate_csv?q=blah => blah_jamf_session_csv_6_11_118_0.23556625957126975.csv</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/identify</td>
+    <td>Allows a post request of raw Text data and generates a CSV of that data, returns the file’s name. Intended to add the user's handle to Jamf data and identify if the computer is in Gear.</td>
+    <td>File's name (String)</td>
+    <td>http://localhost:3000/identify?q=computers_not_checked_zoom => computers_not_checked_zoom.csv</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/delete/csv</td>
+    <td>Deletes a file from the server in the ./csv directory. Uses a query string and returns a confirmation or error depending on success of the call.</td>
+    <td>File's name and directory (String)</td>
+    <td>http://localhost:3000/delete/csv?q=test ? ./csv/test deleted. : file doesn't exist in current directory ./csv/test or there was an error. => refer to server console</td>
+  </tr>
+  <tr>
+    <td>TEST</td>
+    <td>/search</td>
+    <td>Just an HTML template for a search view.</td>
+    <td>n/a</td>
+    <td><a href="http://localhost:3000/search", target="_blank"/>http://localhost:3000/search</a></td>
+  </tr>
+
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+
+  }
+}
+</script>
+
+</body>
+</html>

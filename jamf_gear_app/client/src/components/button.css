@@ -1,0 +1,13 @@
+
+.component-button button {
+  display: inline-flex;
+}
+
+.component-button button {
+  font-size: calc(10px + 2vmin);
+}
+
+.component-button button:hover{
+ color:orange;
+ background-color:orange;
+}

@@ -1,0 +1,13 @@
+.groupName{
+  text-align: center;
+}
+.computerCount{
+  text-align: center;
+}
+.counter{
+  width: 100%;
+  font-size: calc(10px + .4vmin);
+  outline-color: orange;
+  border-radius: 3px;
+  min-height:100px
+}

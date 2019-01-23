@@ -1,0 +1,13 @@
+.counterbox {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.counterColumn{
+  box-sizing: border-box;
+  flex: 0 0 290px;
+  margin: 1%;
+  justify-content: center;
+}

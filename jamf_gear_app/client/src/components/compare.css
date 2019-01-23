@@ -1,0 +1,13 @@
+.counterComparebox {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.counterCompareColumn{
+  box-sizing: border-box;
+  flex: 0 0 290px;
+  margin: 1%;
+}

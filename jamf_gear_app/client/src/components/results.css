@@ -1,0 +1,11 @@
+
+.result{
+  outline: .1px solid grey;
+  padding-left: 1%;
+  padding-right : 1%;
+  padding-bottom: .5%;
+  outline-width : thin;
+  margin-left: 22%;
+  margin-right: 22%;
+  font-size: calc(10px + 2vmin);
+}
